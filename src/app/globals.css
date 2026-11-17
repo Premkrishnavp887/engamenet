@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-emerald-deep: #064B38;
+    --color-emerald-forest: #173B2D;
+    --color-emerald-dark: #092D23;
+    --color-gold-antique: #B99A51;
+    --color-gold-light: #E8CF8C;
+    --color-gold-bright: #D4AF37;
+    --color-gold-dark: #846826;
+    --color-ivory: #F5EBD5;
+    --color-ivory-light: #FAF5EA;
+  }
+
+  body {
+    background-color: var(--color-emerald-dark);
+    color: var(--color-ivory);
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom royal scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #092D23;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #B99A51;
+    border-radius: 4px;
+    border: 2px solid #092D23;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #E8CF8C;
+  }
+}
+
+/* Custom Typography Utilities */
+.font-serif-royal {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive, 'Brush Script MT', serif;
+}
+
+.font-sans-clean {
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+}
+
+/* Gold Text Gradients & Shimmer */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #FAF2D2 0%, #D4AF37 35%, #B99A51 60%, #E8CF8C 85%, #846826 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-text-bright {
+  background: linear-gradient(135deg, #FFF6D6 0%, #E8CF8C 40%, #B99A51 75%, #FDF7E2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-text-antique {
+  background: linear-gradient(135deg, #E6CA7E 0%, #B99A51 50%, #7E6322 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background Gradients */
+.bg-royal-emerald {
+  background: radial-gradient(circle at 50% 30%, #173B2D 0%, #064B38 50%, #092D23 85%, #041712 100%);
+}
+
+.bg-emerald-card {
+  background: linear-gradient(165deg, rgba(23, 59, 45, 0.95) 0%, rgba(6, 75, 56, 0.9) 60%, rgba(9, 45, 35, 0.98) 100%);
+}
+
+.bg-ivory-card {
+  background: linear-gradient(180deg, #FAF5EA 0%, #F5EBD5 60%, #ECE1C5 100%);
+}
+
+/* Gold Borders and Metallic Accents */
+.border-gold-antique {
+  border-color: #B99A51;
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #E8CF8C, #B99A51, #7E6322, #E8CF8C) 1;
+}
+
+.gold-glow-soft {
+  box-shadow: 0 0 25px rgba(185, 154, 81, 0.25);
+}
+
+.gold-glow-strong {
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.4), 0 0 15px rgba(185, 154, 81, 0.3);
+}
+
+.gold-box-shadow {
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(185, 154, 81, 0.2);
+}
+
+/* Diya Flame Flicker */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(255, 180, 50, 0.8));
+  }
+  25% {
+    transform: scale(1.05, 0.95) translate(-0.5px, -1px);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(255, 200, 70, 0.95));
+  }
+  50% {
+    transform: scale(0.97, 1.03) translate(0.5px, 0.5px);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 7px rgba(255, 160, 40, 0.75));
+  }
+  75% {
+    transform: scale(1.03, 0.98) translate(0.3px, -0.5px);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 11px rgba(255, 190, 60, 0.9));
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 2.5s infinite ease-in-out;
+  transform-origin: 50% 90%;
+}
+
+/* Mandala Slow Hypnotic Rotation */
+@keyframes mandalaRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mandalaReverseRotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-mandala-slow {
+  animation: mandalaRotate 120s linear infinite;
+}
+
+.animate-mandala-reverse {
+  animation: mandalaReverseRotate 100s linear infinite;
+}
+
+/* Subtle Shimmer for Gold Accents */
+@keyframes shimmerPass {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.gold-shimmer-sweep {
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 235, 213, 0.35) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmerPass 4s infinite linear;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-mandala-slow,
+  .animate-mandala-reverse,
+  .animate-flame,
+  .gold-shimmer-sweep {
+    animation: none !important;
+  }
+}

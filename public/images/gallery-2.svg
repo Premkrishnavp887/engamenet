@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <radialGradient id="emeraldBg2" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stopColor="#1E4738"/>
+      <stop offset="55%" stopColor="#064B38"/>
+      <stop offset="100%" stopColor="#092D23"/>
+    </radialGradient>
+    <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FFF4D0"/>
+      <stop offset="40%" stopColor="#D4AF37"/>
+      <stop offset="75%" stopColor="#B99A51"/>
+      <stop offset="100%" stopColor="#7E6322"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#emeraldBg2)"/>
+
+  <!-- Ornate Frame -->
+  <rect x="30" y="30" width="740" height="940" rx="20" fill="none" stroke="url(#gold2)" stroke-width="2" opacity="0.6"/>
+  <rect x="45" y="45" width="710" height="910" rx="14" fill="none" stroke="url(#gold2)" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+
+  <!-- Temple Sannidhi Silhouette & Arch -->
+  <g transform="translate(400, 420)">
+    <!-- Radiance Aura -->
+    <circle cx="0" cy="0" r="180" fill="url(#gold2)" opacity="0.08"/>
+
+    <!-- Sacred Temple Kalasam Tower -->
+    <path d="M0 -160 L15 -130 L-15 -130 Z" fill="url(#gold2)"/>
+    <circle cx="0" cy="-165" r="5" fill="#FAF5EA"/>
+    <path d="M-30 -130 L30 -130 L45 -70 L-45 -70 Z" fill="none" stroke="url(#gold2)" stroke-width="2"/>
+    <path d="M-60 -70 L60 -70 L80 0 L-80 0 Z" fill="none" stroke="url(#gold2)" stroke-width="2"/>
+    <path d="M-100 0 L100 0 L120 90 L-120 90 Z" fill="none" stroke="url(#gold2)" stroke-width="2.5"/>
+
+    <!-- Sacred Temple Arch Pillars -->
+    <path d="M-90 90 L-90 220 M90 90 L90 220" stroke="url(#gold2)" stroke-width="4"/>
+    <path d="M-90 90 Q0 30 90 90" stroke="url(#gold2)" stroke-width="3" fill="none"/>
+
+    <!-- Diya Glow in Sanctum -->
+    <circle cx="0" cy="160" r="14" fill="#FFAA00" opacity="0.8" filter="drop-shadow(0 0 20px #FFD700)"/>
+    <path d="M-20 180 C-20 195 20 195 20 180 Z" fill="url(#gold2)"/>
+  </g>
+
+  <!-- Title & Typography -->
+  <text x="400" y="800" font-family="Georgia, serif" font-size="24" fill="url(#gold2)" text-anchor="middle" letter-spacing="5">NEELAMKULAGARA DEVI</text>
+  <text x="400" y="840" font-family="Georgia, serif" font-size="16" fill="#F5EBD5" text-anchor="middle" letter-spacing="4" opacity="0.8">SACRED BLESSINGS &amp; GRACE</text>
+  <text x="400" y="875" font-family="Georgia, serif" font-size="13" fill="#B99A51" text-anchor="middle" letter-spacing="3" opacity="0.7">TEMPLE CEREMONY</text>
+</svg>

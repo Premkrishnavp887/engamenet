@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <radialGradient id="emeraldBg4" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stopColor="#1C4436"/>
+      <stop offset="60%" stopColor="#064B38"/>
+      <stop offset="100%" stopColor="#092D23"/>
+    </radialGradient>
+    <linearGradient id="gold4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FFF4D0"/>
+      <stop offset="35%" stopColor="#E2C172"/>
+      <stop offset="70%" stopColor="#B99A51"/>
+      <stop offset="100%" stopColor="#7E6322"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#emeraldBg4)"/>
+
+  <!-- Ornate Border -->
+  <rect x="30" y="30" width="740" height="940" rx="20" fill="none" stroke="url(#gold4)" stroke-width="2" opacity="0.6"/>
+  <rect x="45" y="45" width="710" height="910" rx="14" fill="none" stroke="url(#gold4)" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+
+  <!-- Golden Silhouette: Two Hearts Joining Under Divine Arch -->
+  <g transform="translate(400, 430)">
+    <!-- Radiance -->
+    <circle cx="0" cy="0" r="190" fill="url(#gold4)" opacity="0.06"/>
+
+    <!-- Sacred Temple Bell with Lotus -->
+    <path d="M-60 -150 Q0 -190 60 -150 L80 -50 L-80 -50 Z" stroke="url(#gold4)" stroke-width="2.5" fill="none"/>
+    <path d="M-90 -50 L90 -50" stroke="url(#gold4)" stroke-width="4"/>
+    <circle cx="0" cy="-20" r="16" fill="url(#gold4)"/>
+
+    <!-- Heart Symbol merged into infinity loop -->
+    <path d="M-60 60 C-110 0 -130 90 -60 140 L0 190 L60 140 C130 90 110 0 60 60 C30 90 0 90 0 90 C0 90 -30 90 -60 60 Z"
+          fill="url(#gold4)" opacity="0.85" filter="drop-shadow(0 0 15px rgba(212,175,55,0.4))"/>
+
+    <circle cx="0" cy="110" r="8" fill="#FAF5EA"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="400" y="800" font-family="Georgia, serif" font-size="26" fill="url(#gold4)" text-anchor="middle" letter-spacing="6">ETERNAL PROMISE</text>
+  <text x="400" y="840" font-family="Georgia, serif" font-size="16" fill="#F5EBD5" text-anchor="middle" letter-spacing="4" opacity="0.8">TWO HEARTS · ONE DESTINY</text>
+  <text x="400" y="875" font-family="Georgia, serif" font-size="13" fill="#B99A51" text-anchor="middle" letter-spacing="3" opacity="0.7">SUNDAY, 22 NOVEMBER 2026</text>
+</svg>
