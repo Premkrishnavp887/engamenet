@@ -1,59 +1,55 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
   <defs>
-    <radialGradient id="emeraldBg" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stopColor="#173B2D"/>
-      <stop offset="60%" stopColor="#064B38"/>
-      <stop offset="100%" stopColor="#092D23"/>
+    <radialGradient id="plumBg1" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stopColor="#461B43"/>
+      <stop offset="55%" stopColor="#34112F"/>
+      <stop offset="100%" stopColor="#260C26"/>
     </radialGradient>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#FFF4D0"/>
-      <stop offset="35%" stopColor="#E2C172"/>
-      <stop offset="70%" stopColor="#B99A51"/>
-      <stop offset="100%" stopColor="#8A6D2B"/>
+    <linearGradient id="goldPlum1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F7EBDD"/>
+      <stop offset="35%" stopColor="#D9B77B"/>
+      <stop offset="70%" stopColor="#C49A58"/>
+      <stop offset="100%" stopColor="#8B672B"/>
     </linearGradient>
-    <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.8"/>
+    <radialGradient id="ringGlowPlum" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#D9B77B" stopOpacity="0.8"/>
       <stop offset="100%" stopColor="transparent" stopOpacity="0"/>
     </radialGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="800" height="1000" fill="url(#emeraldBg)"/>
+  <rect width="800" height="1000" fill="url(#plumBg1)"/>
 
   <!-- Ornate Border -->
-  <rect x="30" y="30" width="740" height="940" rx="20" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.6"/>
-  <rect x="45" y="45" width="710" height="910" rx="14" fill="none" stroke="url(#gold)" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+  <rect x="30" y="30" width="740" height="940" rx="20" fill="none" stroke="url(#goldPlum1)" stroke-width="1.8" opacity="0.6"/>
+  <rect x="45" y="45" width="710" height="910" rx="14" fill="none" stroke="url(#goldPlum1)" stroke-width="0.8" stroke-dasharray="4 6" opacity="0.4"/>
 
-  <!-- Subtle Mandala in Center -->
-  <circle cx="400" cy="460" r="220" stroke="url(#gold)" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.25" fill="none"/>
-  <circle cx="400" cy="460" r="150" stroke="url(#gold)" stroke-width="1" opacity="0.3" fill="none"/>
+  <!-- Subtle Mandala in Center with teardrop accents -->
+  <circle cx="400" cy="460" r="210" stroke="url(#goldPlum1)" stroke-width="1.2" stroke-dasharray="3 5" opacity="0.25" fill="none"/>
+  <circle cx="400" cy="460" r="145" stroke="url(#goldPlum1)" stroke-width="1" opacity="0.3" fill="none"/>
 
   <!-- Interlocking Golden Engagement Rings -->
   <g transform="translate(400, 460)">
-    <!-- Ring 1 -->
-    <ellipse cx="-45" cy="0" rx="90" ry="90" fill="none" stroke="url(#gold)" stroke-width="14" filter="drop-shadow(0 0 15px rgba(212,175,55,0.6))"/>
-    <ellipse cx="-45" cy="0" rx="90" ry="90" fill="none" stroke="#FFF4D0" stroke-width="2" opacity="0.8"/>
-    <!-- Solitaire Diamond on Ring 1 -->
+    <ellipse cx="-45" cy="0" rx="90" ry="90" fill="none" stroke="url(#goldPlum1)" stroke-width="12" filter="drop-shadow(0 0 15px rgba(217,183,123,0.4))"/>
+    <ellipse cx="-45" cy="0" rx="90" ry="90" fill="none" stroke="#F7EBDD" stroke-width="1.5" opacity="0.75"/>
     <polygon points="-45,-98 -35,-90 -45,-82 -55,-90" fill="#FFFFFF"/>
-    <circle cx="-45" cy="-90" r="8" fill="url(#ringGlow)"/>
+    <circle cx="-45" cy="-90" r="8" fill="url(#ringGlowPlum)"/>
 
-    <!-- Ring 2 -->
-    <ellipse cx="45" cy="15" rx="85" ry="85" fill="none" stroke="url(#gold)" stroke-width="12" filter="drop-shadow(0 0 15px rgba(212,175,55,0.6))"/>
-    <ellipse cx="45" cy="15" rx="85" ry="85" fill="none" stroke="#FFF4D0" stroke-width="2" opacity="0.8"/>
+    <ellipse cx="45" cy="15" rx="85" ry="85" fill="none" stroke="url(#goldPlum1)" stroke-width="10" filter="drop-shadow(0 0 15px rgba(217,183,123,0.4))"/>
+    <ellipse cx="45" cy="15" rx="85" ry="85" fill="none" stroke="#F7EBDD" stroke-width="1.5" opacity="0.75"/>
   </g>
 
-  <!-- Jasmine Garland Flourish at Base -->
-  <g stroke="url(#gold)" stroke-width="1.5" opacity="0.7" fill="none">
+  <!-- Jasmine & Lotus Flourish at Base -->
+  <g stroke="url(#goldPlum1)" stroke-width="1.2" opacity="0.7" fill="none">
     <path d="M250 680 Q400 750 550 680"/>
-    <circle cx="300" cy="705" r="5" fill="#FAF5EA"/>
-    <circle cx="350" cy="720" r="6" fill="#FAF5EA"/>
-    <circle cx="400" cy="725" r="7" fill="#FFF4D0"/>
-    <circle cx="450" cy="720" r="6" fill="#FAF5EA"/>
-    <circle cx="500" cy="705" r="5" fill="#FAF5EA"/>
+    <circle cx="300" cy="705" r="4" fill="#F7EBDD"/>
+    <circle cx="350" cy="720" r="5" fill="#F7EBDD"/>
+    <circle cx="400" cy="725" r="6" fill="#D9B77B"/>
+    <circle cx="450" cy="720" r="5" fill="#F7EBDD"/>
+    <circle cx="500" cy="705" r="4" fill="#F7EBDD"/>
   </g>
 
   <!-- Title & Typography -->
-  <text x="400" y="820" font-family="Georgia, serif" font-size="28" fill="url(#gold)" text-anchor="middle" letter-spacing="6">JYOTHI &amp; MRIDHUL</text>
-  <text x="400" y="860" font-family="Georgia, serif" font-size="16" fill="#F5EBD5" text-anchor="middle" letter-spacing="4" opacity="0.8">THE PROMISE OF FOREVER</text>
-  <text x="400" y="890" font-family="Georgia, serif" font-size="13" fill="#B99A51" text-anchor="middle" letter-spacing="3" opacity="0.7">22 NOVEMBER 2026</text>
+  <text x="400" y="820" font-family="Georgia, serif" font-size="28" fill="url(#goldPlum1)" text-anchor="middle" letter-spacing="6">JYOTHI &amp; MRIDHUL</text>
+  <text x="400" y="860" font-family="Georgia, serif" font-size="15" fill="#F7EBDD" text-anchor="middle" letter-spacing="4" opacity="0.8">THE PROMISE OF FOREVER</text>
+  <text x="400" y="890" font-family="Georgia, serif" font-size="12" fill="#C49A58" text-anchor="middle" letter-spacing="3" opacity="0.7">22 NOVEMBER 2026</text>
 </svg>

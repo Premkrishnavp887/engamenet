@@ -10,7 +10,7 @@ interface MandalaProps {
   intensity?: 'soft' | 'radiant';
 }
 
-export function OrnateMandalaSvg({ size = 500 }: { size?: number | string }) {
+export function OrnateMandalaSvg({ size = 520 }: { size?: number | string }) {
   return (
     <svg
       viewBox="0 0 600 600"
@@ -21,162 +21,140 @@ export function OrnateMandalaSvg({ size = 500 }: { size?: number | string }) {
       className="max-w-none select-none pointer-events-none"
     >
       <defs>
-        <linearGradient id="mandalaGoldMain" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFF2C8" />
-          <stop offset="25%" stopColor="#E2C172" />
-          <stop offset="60%" stopColor="#B99A51" />
-          <stop offset="85%" stopColor="#8A6D2B" />
-          <stop offset="100%" stopColor="#FAF2D2" />
+        <linearGradient id="plumGoldMain" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F7EBDD" />
+          <stop offset="30%" stopColor="#D9B77B" />
+          <stop offset="70%" stopColor="#C49A58" />
+          <stop offset="100%" stopColor="#8B672B" />
         </linearGradient>
 
-        <linearGradient id="mandalaGoldAccent" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#D4AF37" />
-          <stop offset="50%" stopColor="#F5EBD5" />
-          <stop offset="100%" stopColor="#8A6D2B" />
+        <linearGradient id="plumGoldAccent" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#EFE1CF" />
+          <stop offset="50%" stopColor="#D9B77B" />
+          <stop offset="100%" stopColor="#8B672B" />
         </linearGradient>
 
-        <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.8" />
-          <stop offset="40%" stopColor="#B99A51" stopOpacity="0.4" />
-          <stop offset="80%" stopColor="#064B38" stopOpacity="0.1" />
+        <radialGradient id="plumMandalaGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#D9B77B" stopOpacity="0.4" />
+          <stop offset="45%" stopColor="#461B43" stopOpacity="0.3" />
+          <stop offset="80%" stopColor="#260C26" stopOpacity="0.1" />
           <stop offset="100%" stopColor="transparent" stopOpacity="0" />
         </radialGradient>
-
-        <filter id="mandalaGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
       </defs>
 
       {/* Central Radiance Glow */}
-      <circle cx="300" cy="300" r="280" fill="url(#centerGlow)" opacity="0.6" />
+      <circle cx="300" cy="300" r="280" fill="url(#plumMandalaGlow)" opacity="0.7" />
 
-      {/* Outer Ring with Beaded Dots */}
-      <circle
-        cx="300"
-        cy="300"
-        r="285"
-        stroke="url(#mandalaGoldMain)"
-        strokeWidth="1.5"
-        strokeDasharray="4 6"
-        opacity="0.75"
-      />
-      <circle
-        cx="300"
-        cy="300"
-        r="275"
-        stroke="url(#mandalaGoldAccent)"
-        strokeWidth="2"
-        opacity="0.85"
-      />
-
-      {/* Outer 24 Petal Flame Crown */}
-      <g stroke="url(#mandalaGoldMain)" strokeWidth="1.2" opacity="0.8">
+      {/* Outer Crown: 24 Traditional Radiating Teardrop / Paisley Flames matching reference image */}
+      <g stroke="url(#plumGoldMain)" strokeWidth="1.2" opacity="0.85">
         {Array.from({ length: 24 }).map((_, i) => {
           const angle = (i * 360) / 24;
           return (
-            <g key={`outer-petal-${i}`} transform={`rotate(${angle} 300 300)`}>
+            <g key={`teardrop-petal-${i}`} transform={`rotate(${angle} 300 300)`}>
+              {/* Teardrop loop */}
               <path
-                d="M300 25 Q290 60 300 80 Q310 60 300 25"
-                fill="url(#mandalaGoldAccent)"
-                fillOpacity="0.2"
+                d="M300 18 C288 38 286 65 300 82 C314 65 312 38 300 18 Z"
+                fill="url(#plumGoldAccent)"
+                fillOpacity="0.18"
               />
-              <circle cx="300" cy="24" r="2" fill="#FAF5EA" />
+              <path
+                d="M300 30 C293 45 292 62 300 74 C308 62 307 45 300 30 Z"
+                stroke="url(#plumGoldMain)"
+                strokeWidth="0.8"
+                fill="none"
+              />
+              {/* Crown bead tip */}
+              <circle cx="300" cy="14" r="2.5" fill="#F7EBDD" />
             </g>
           );
         })}
       </g>
 
-      {/* Concentric Decorative Ring 2 */}
+      {/* Outer Beaded Concentric Ring */}
       <circle
         cx="300"
         cy="300"
-        r="220"
-        stroke="url(#mandalaGoldMain)"
-        strokeWidth="1"
+        r="215"
+        stroke="url(#plumGoldMain)"
+        strokeWidth="1.2"
         strokeDasharray="3 5"
+        opacity="0.85"
+      />
+      <circle
+        cx="300"
+        cy="300"
+        r="205"
+        stroke="url(#plumGoldAccent)"
+        strokeWidth="1.5"
+        opacity="0.9"
+      />
+
+      {/* 24 Scalloped Arcs Ring */}
+      <g stroke="url(#plumGoldMain)" strokeWidth="1" opacity="0.8">
+        {Array.from({ length: 24 }).map((_, i) => {
+          const angle = (i * 360) / 24;
+          return (
+            <g key={`scallop-${i}`} transform={`rotate(${angle} 300 300)`}>
+              <path
+                d="M288 100 Q300 88 312 100"
+                fill="none"
+              />
+              <circle cx="300" cy="94" r="1.5" fill="#D9B77B" />
+            </g>
+          );
+        })}
+      </g>
+
+      {/* Middle Concentric Ring */}
+      <circle
+        cx="300"
+        cy="300"
+        r="165"
+        stroke="url(#plumGoldMain)"
+        strokeWidth="1.5"
         opacity="0.9"
       />
       <circle
         cx="300"
         cy="300"
-        r="212"
-        stroke="url(#mandalaGoldAccent)"
-        strokeWidth="1.75"
+        r="158"
+        stroke="url(#plumGoldAccent)"
+        strokeWidth="1"
+        strokeDasharray="2 4"
         opacity="0.85"
       />
 
-      {/* 16 Scalloped Petals with Floral Inserts */}
-      <g stroke="url(#mandalaGoldMain)" strokeWidth="1.5" opacity="0.9">
+      {/* 16 Traditional Lotus Petals */}
+      <g stroke="url(#plumGoldMain)" strokeWidth="1.2" opacity="0.9">
         {Array.from({ length: 16 }).map((_, i) => {
           const angle = (i * 360) / 16;
           return (
             <g key={`mid-petal-${i}`} transform={`rotate(${angle} 300 300)`}>
               <path
-                d="M300 88 C275 125 275 160 300 185 C325 160 325 125 300 88 Z"
-                fill="url(#mandalaGoldMain)"
-                fillOpacity="0.15"
+                d="M300 142 C285 168 285 195 300 215 C315 195 315 168 300 142 Z"
+                fill="url(#plumGoldMain)"
+                fillOpacity="0.2"
               />
-              <path
-                d="M300 115 C285 140 285 160 300 175 C315 160 315 140 300 115 Z"
-                fill="url(#mandalaGoldAccent)"
-                fillOpacity="0.3"
-              />
-              <circle cx="300" cy="88" r="3" fill="#D4AF37" />
-            </g>
-          );
-        })}
-      </g>
-
-      {/* Concentric Decorative Ring 3 */}
-      <circle
-        cx="300"
-        cy="300"
-        r="145"
-        stroke="url(#mandalaGoldAccent)"
-        strokeWidth="1.5"
-        strokeDasharray="2 4"
-        opacity="0.85"
-      />
-      <circle
-        cx="300"
-        cy="300"
-        r="135"
-        stroke="url(#mandalaGoldMain)"
-        strokeWidth="2"
-        opacity="0.95"
-      />
-
-      {/* 12 Traditional Indian Lotus Core Petals */}
-      <g stroke="url(#mandalaGoldAccent)" strokeWidth="1.5" opacity="0.95">
-        {Array.from({ length: 12 }).map((_, i) => {
-          const angle = (i * 360) / 12;
-          return (
-            <g key={`core-petal-${i}`} transform={`rotate(${angle} 300 300)`}>
-              <path
-                d="M300 165 C280 200 280 230 300 250 C320 230 320 200 300 165 Z"
-                fill="url(#mandalaGoldMain)"
-                fillOpacity="0.35"
-              />
-              <line x1="300" y1="165" x2="300" y2="245" stroke="#FFF2C8" strokeWidth="0.75" />
+              <line x1="300" y1="145" x2="300" y2="210" stroke="#F7EBDD" strokeWidth="0.6" opacity="0.7" />
+              <circle cx="300" cy="142" r="2" fill="#D9B77B" />
             </g>
           );
         })}
       </g>
 
       {/* Inner Central Sun / Bindu Ring */}
-      <circle cx="300" cy="300" r="50" fill="url(#centerGlow)" />
-      <circle cx="300" cy="300" r="50" stroke="url(#mandalaGoldMain)" strokeWidth="2" />
-      <circle cx="300" cy="300" r="38" stroke="url(#mandalaGoldAccent)" strokeWidth="1" strokeDasharray="2 3" />
-      <circle cx="300" cy="300" r="16" fill="#D4AF37" opacity="0.85" />
-      <circle cx="300" cy="300" r="7" fill="#FAF5EA" />
+      <circle cx="300" cy="300" r="75" stroke="url(#plumGoldMain)" strokeWidth="1.5" />
+      <circle cx="300" cy="300" r="68" stroke="url(#plumGoldAccent)" strokeWidth="1" strokeDasharray="2 3" opacity="0.8" />
+      <circle cx="300" cy="300" r="28" fill="url(#plumMandalaGlow)" />
+      <circle cx="300" cy="300" r="12" fill="#D9B77B" opacity="0.7" />
+      <circle cx="300" cy="300" r="5" fill="#F7EBDD" />
     </svg>
   );
 }
 
 export function MandalaBackground({
   className = '',
-  size = 650,
+  size = 560,
   isOpening = false,
   intensity = 'soft',
 }: MandalaProps) {
@@ -189,31 +167,31 @@ export function MandalaBackground({
       <div
         className={`absolute rounded-full transition-all duration-1000 ${
           intensity === 'radiant'
-            ? 'w-[420px] h-[420px] bg-gradient-to-tr from-[#D4AF37]/35 via-[#B99A51]/20 to-transparent blur-3xl'
-            : 'w-[320px] h-[320px] bg-gradient-to-tr from-[#B99A51]/20 to-transparent blur-2xl'
+            ? 'w-[380px] h-[380px] bg-gradient-to-tr from-[#D9B77B]/25 via-[#C49A58]/15 to-transparent blur-3xl'
+            : 'w-[280px] h-[280px] bg-gradient-to-tr from-[#C49A58]/15 to-transparent blur-2xl'
         }`}
       />
 
-      {/* Counter-rotating Outer Layer */}
+      {/* Gentle Rotating SVG Mandala layer behind artwork */}
       <motion.div
         animate={{
-          rotate: isOpening ? [0, 180] : [0, 360],
-          scale: isOpening ? [1, 2.5] : [1, 1.02, 1],
-          opacity: isOpening ? [0.9, 0] : [0.75, 0.9, 0.75],
+          rotate: isOpening ? [0, 90] : [0, 360],
+          scale: isOpening ? [1, 2.6] : [1, 1.015, 1],
+          opacity: isOpening ? [0.85, 0] : [0.75, 0.9, 0.75],
         }}
         transition={{
           rotate: {
-            duration: isOpening ? 2 : 120,
+            duration: isOpening ? 1.8 : 140,
             repeat: isOpening ? 0 : Infinity,
             ease: isOpening ? 'easeInOut' : 'linear',
           },
           scale: {
-            duration: isOpening ? 1.8 : 8,
+            duration: isOpening ? 1.6 : 8,
             repeat: isOpening ? 0 : Infinity,
             ease: isOpening ? 'easeOut' : 'easeInOut',
           },
           opacity: {
-            duration: isOpening ? 1.6 : 6,
+            duration: isOpening ? 1.4 : 6,
             repeat: isOpening ? 0 : Infinity,
             ease: 'easeInOut',
           },

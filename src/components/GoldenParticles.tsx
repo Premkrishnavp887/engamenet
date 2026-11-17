@@ -20,7 +20,7 @@ interface Particle {
   goldenTone: string;
 }
 
-export function GoldenParticles({ burst = false, count = 45, className = '' }: GoldenParticlesProps) {
+export function GoldenParticles({ burst = false, count = 35, className = '' }: GoldenParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -41,38 +41,39 @@ export function GoldenParticles({ burst = false, count = 45, className = '' }: G
 
     window.addEventListener('resize', handleResize);
 
+    // Muted antique gold & champagne tones
     const colors = [
-      'rgba(255, 242, 200, ', // Light Champagne Gold
-      'rgba(232, 207, 140, ', // Antique Gold Light
-      'rgba(212, 175, 55, ',  // Bright Metallic Gold
-      'rgba(185, 154, 81, ',  // Deep Antique Gold
+      'rgba(247, 235, 221, ', // Soft Warm Ivory
+      'rgba(217, 183, 123, ', // Soft Champagne Gold
+      'rgba(196, 154, 88, ',  // Muted Antique Gold
+      'rgba(156, 119, 56, ',  // Deep Antique Gold
     ];
 
     const particles: Particle[] = [];
-    const particleCount = burst ? count * 2.5 : count;
+    const particleCount = burst ? count * 2.2 : count;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 2.2 + 0.8,
-        speedY: -(Math.random() * 0.45 + 0.15),
-        speedX: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.7 + 0.2,
-        targetOpacity: Math.random() * 0.8 + 0.2,
-        pulseSpeed: Math.random() * 0.02 + 0.008,
+        size: Math.random() * 2 + 0.8,
+        speedY: -(Math.random() * 0.35 + 0.12),
+        speedX: (Math.random() - 0.5) * 0.25,
+        opacity: Math.random() * 0.6 + 0.15,
+        targetOpacity: Math.random() * 0.7 + 0.2,
+        pulseSpeed: Math.random() * 0.015 + 0.006,
         goldenTone: colors[Math.floor(Math.random() * colors.length)],
       });
     }
 
-    // Burst mode expansion
+    // Burst mode expansion on opening
     if (burst) {
       particles.forEach((p) => {
         const angle = Math.random() * Math.PI * 2;
-        const velocity = Math.random() * 4 + 2;
+        const velocity = Math.random() * 3.5 + 1.8;
         p.speedX = Math.cos(angle) * velocity;
         p.speedY = Math.sin(angle) * velocity;
-        p.size = Math.random() * 3.5 + 1.2;
+        p.size = Math.random() * 3 + 1.2;
       });
     }
 
@@ -85,7 +86,7 @@ export function GoldenParticles({ burst = false, count = 45, className = '' }: G
 
         // Subtle glow pulse
         p.opacity += p.pulseSpeed;
-        if (p.opacity > 0.85 || p.opacity < 0.2) {
+        if (p.opacity > 0.8 || p.opacity < 0.15) {
           p.pulseSpeed = -p.pulseSpeed;
         }
 
@@ -97,10 +98,10 @@ export function GoldenParticles({ burst = false, count = 45, className = '' }: G
         if (p.x < -10) p.x = width + 10;
         if (p.x > width + 10) p.x = -10;
 
-        // Draw particle with gentle gold radial glow
+        // Draw particle with gentle radial glow
         const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
         glow.addColorStop(0, `${p.goldenTone}${p.opacity})`);
-        glow.addColorStop(0.5, `${p.goldenTone}${p.opacity * 0.5})`);
+        glow.addColorStop(0.5, `${p.goldenTone}${p.opacity * 0.4})`);
         glow.addColorStop(1, `${p.goldenTone}0)`);
 
         ctx.fillStyle = glow;
@@ -108,10 +109,10 @@ export function GoldenParticles({ burst = false, count = 45, className = '' }: G
         ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
         ctx.fill();
 
-        // Bright particle core
-        ctx.fillStyle = `rgba(255, 255, 240, ${p.opacity * 0.9})`;
+        // Core light dot
+        ctx.fillStyle = `rgba(247, 235, 221, ${p.opacity * 0.85})`;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 0.6, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
         ctx.fill();
       });
 

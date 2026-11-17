@@ -3,7 +3,7 @@
 import React, { useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GalleryPhoto } from '@/config/invitation';
 import { CornerOrnament, LotusMotif } from './OrnamentalBorders';
 
@@ -61,13 +61,13 @@ export function LightboxModal({ photos, currentIndex, onClose, onNavigate }: Lig
             className="absolute top-4 right-4 z-60 flex items-center gap-3"
             onClick={(e) => e.stopPropagation()}
           >
-            <span className="font-serif text-xs tracking-widest text-[#E8CF8C] uppercase px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-xs">
+            <span className="font-serif text-xs tracking-widest text-[#D9B77B] uppercase px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-xs border border-[#C49A58]/30">
               {(currentIndex ?? 0) + 1} / {photos.length}
             </span>
             <button
               onClick={onClose}
               aria-label="Close Lightbox"
-              className="p-2.5 rounded-full bg-black/50 hover:bg-[#B99A51]/30 text-[#E8CF8C] border border-[#B99A51]/40 transition-colors cursor-pointer"
+              className="p-2.5 rounded-full bg-black/60 hover:bg-[#34112F] text-[#D9B77B] border border-[#C49A58]/40 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -80,7 +80,7 @@ export function LightboxModal({ photos, currentIndex, onClose, onNavigate }: Lig
               onNavigate(((currentIndex ?? 0) - 1 + photos.length) % photos.length);
             }}
             aria-label="Previous Photo"
-            className="absolute left-2 sm:left-6 z-60 p-3 rounded-full bg-black/50 hover:bg-[#B99A51]/30 text-[#E8CF8C] border border-[#B99A51]/40 transition-colors cursor-pointer"
+            className="absolute left-2 sm:left-6 z-60 p-3 rounded-full bg-black/60 hover:bg-[#34112F] text-[#D9B77B] border border-[#C49A58]/40 transition-colors cursor-pointer"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -92,7 +92,7 @@ export function LightboxModal({ photos, currentIndex, onClose, onNavigate }: Lig
               onNavigate(((currentIndex ?? 0) + 1) % photos.length);
             }}
             aria-label="Next Photo"
-            className="absolute right-2 sm:right-6 z-60 p-3 rounded-full bg-black/50 hover:bg-[#B99A51]/30 text-[#E8CF8C] border border-[#B99A51]/40 transition-colors cursor-pointer"
+            className="absolute right-2 sm:right-6 z-60 p-3 rounded-full bg-black/60 hover:bg-[#34112F] text-[#D9B77B] border border-[#C49A58]/40 transition-colors cursor-pointer"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -100,38 +100,38 @@ export function LightboxModal({ photos, currentIndex, onClose, onNavigate }: Lig
           {/* Main Photo Card */}
           <motion.div
             key={currentPhoto.id}
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.92, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
+            exit={{ scale: 0.92, opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-lg w-full max-h-[85vh] flex flex-col items-center rounded-3xl overflow-hidden bg-emerald-card border-2 border-[#B99A51] shadow-[0_25px_60px_rgba(0,0,0,0.8)]"
+            className="relative max-w-lg w-full max-h-[85vh] flex flex-col items-center rounded-3xl overflow-hidden bg-plum-card border border-[#C49A58]/70 shadow-[0_25px_60px_rgba(15,3,15,0.9)]"
           >
             <CornerOrnament position="top-left" />
             <CornerOrnament position="top-right" />
 
             {/* Photo Container */}
-            <div className="relative w-full aspect-[4/5] bg-black/40 overflow-hidden">
+            <div className="relative w-full h-[55vh] sm:h-[65vh] bg-black/60 overflow-hidden flex items-center justify-center">
               <Image
                 src={currentPhoto.src}
                 alt={currentPhoto.alt}
                 fill
                 priority
                 className="object-contain"
-                sizes="(max-width: 640px) 90vw, 500px"
+                sizes="(max-width: 640px) 95vw, 600px"
               />
             </div>
 
             {/* Caption Footer */}
-            <div className="w-full p-4 sm:p-5 bg-gradient-to-t from-[#092D23] to-[#064B38] text-center border-t border-[#B99A51]/30">
+            <div className="w-full p-4 sm:p-5 bg-gradient-to-t from-[#1A071A] to-[#260C26] text-center border-t border-[#C49A58]/30">
               <div className="flex items-center justify-center gap-2 mb-1">
-                <LotusMotif className="w-4 h-3" />
-                <h4 className="font-serif text-base sm:text-lg gold-text-bright font-medium">
+                <LotusMotif className="w-4 h-3 text-[#C49A58]" />
+                <h4 className="font-serif text-base sm:text-lg gold-text-muted font-medium">
                   {currentPhoto.caption}
                 </h4>
-                <LotusMotif className="w-4 h-3" />
+                <LotusMotif className="w-4 h-3 text-[#C49A58]" />
               </div>
-              <p className="text-xs font-serif text-[#F5EBD5]/75 italic">
+              <p className="text-xs font-serif text-[#F7EBDD]/75 italic">
                 {currentPhoto.alt}
               </p>
             </div>

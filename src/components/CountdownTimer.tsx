@@ -14,7 +14,7 @@ interface TimeLeft {
 }
 
 export function CountdownTimer() {
-  const targetDateStr = invitationConfig.event.timestamp; // '2026-11-22T11:45:00+05:30'
+  const targetDateStr = invitationConfig.event.timestamp; // '2026-11-22T11:45:00+05:30' (Asia/Kolkata)
 
   const calculateTimeLeft = (): TimeLeft => {
     const target = new Date(targetDateStr).getTime();
@@ -75,18 +75,18 @@ export function CountdownTimer() {
       >
         {/* Section Heading */}
         <div className="flex items-center justify-center gap-2 mb-2">
-          <LotusMotif className="w-5 h-4" />
-          <span className="font-serif tracking-[0.25em] text-xs sm:text-sm uppercase gold-text-antique font-semibold">
+          <LotusMotif className="w-5 h-4 text-[#C49A58]" />
+          <span className="font-serif tracking-[0.24em] text-xs sm:text-sm uppercase gold-text-antique font-semibold">
             Counting Down To The Sacred Moment
           </span>
-          <LotusMotif className="w-5 h-4" />
+          <LotusMotif className="w-5 h-4 text-[#C49A58]" />
         </div>
 
-        <p className="font-serif italic text-sm sm:text-base text-[#F5EBD5]/80 mb-8">
+        <p className="font-serif italic text-sm sm:text-base text-[#F7EBDD]/80 mb-8">
           Every second brings us closer to a lifetime of togetherness
         </p>
 
-        {/* Countdown Digits Grid */}
+        {/* Countdown Digits Grid on Deep Plum Card */}
         <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-xl mx-auto">
           {timeUnits.map((unit, index) => (
             <motion.div
@@ -95,24 +95,24 @@ export function CountdownTimer() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative flex flex-col items-center justify-center p-3 sm:p-5 rounded-2xl bg-emerald-card border border-[#B99A51]/40 shadow-[0_10px_25px_rgba(0,0,0,0.5)] overflow-hidden group"
+              className="relative flex flex-col items-center justify-center p-3 sm:p-5 rounded-2xl bg-plum-card border border-[#C49A58]/35 shadow-[0_10px_25px_rgba(15,3,15,0.6)] overflow-hidden group"
             >
               {/* Inner subtle glow */}
-              <div className="absolute inset-0 bg-radial from-[#B99A51]/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-radial from-[#C49A58]/08 to-transparent pointer-events-none" />
 
-              {/* Gold Number */}
-              <div className="relative font-serif text-2xl sm:text-4xl md:text-5xl font-bold gold-text-bright tracking-tight min-w-[2ch]">
+              {/* Large Gold Number */}
+              <div className="relative font-serif text-2xl sm:text-4xl md:text-5xl font-bold gold-text-champagne tracking-tight min-w-[2ch]">
                 {mounted ? String(unit.value).padStart(2, '0') : '--'}
               </div>
 
               {/* Unit Label */}
-              <span className="mt-1 sm:mt-2 text-[10px] sm:text-xs font-serif uppercase tracking-[0.2em] text-[#E8CF8C]/80 font-medium">
+              <span className="mt-1 sm:mt-2 text-[10px] sm:text-xs font-serif uppercase tracking-[0.2em] text-[#D9B77B]/85 font-medium">
                 {unit.label}
               </span>
 
-              {/* Decorative Corner Dots */}
-              <span className="absolute top-1.5 left-1.5 w-1 h-1 rounded-full bg-[#B99A51]/40" />
-              <span className="absolute top-1.5 right-1.5 w-1 h-1 rounded-full bg-[#B99A51]/40" />
+              {/* Fine Corner Accents */}
+              <span className="absolute top-1.5 left-1.5 w-1 h-1 rounded-full bg-[#C49A58]/40" />
+              <span className="absolute top-1.5 right-1.5 w-1 h-1 rounded-full bg-[#C49A58]/40" />
             </motion.div>
           ))}
         </div>
@@ -121,9 +121,9 @@ export function CountdownTimer() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-6 text-lg font-serif gold-text-bright"
+            className="mt-6 text-lg font-serif gold-text-champagne"
           >
-            The Sacred Muhurtham Has Arrived!
+            The Auspicious Muhurtham Has Arrived!
           </motion.div>
         )}
       </motion.div>

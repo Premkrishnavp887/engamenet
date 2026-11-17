@@ -31,15 +31,15 @@ export interface InvitationConfig {
     subtitle: string;
     date: string; // ISO date '2026-11-22'
     time: string; // '11:45 AM'
-    timestamp: string; // '2026-11-22T11:45:00+05:30'
+    timestamp: string; // '2026-11-22T11:45:00+05:30' (Asia/Kolkata timezone)
     dayOfWeek: string;
     muhurtham: string;
     venueName: string;
     venueSubtext: string;
-    address: string;
-    city: string;
-    state: string;
-    mapsUrl: string; // configurable, falls back to Google Maps search
+    address: string; // Left un-invented until exact details provided
+    city?: string;
+    state?: string;
+    mapsUrl: string; // Kept empty / pending until exact link is provided
     calendarEvent: {
       title: string;
       description: string;
@@ -57,6 +57,7 @@ export interface InvitationConfig {
     closingSalutation: string;
     closingSignature: string;
   };
+  showGallery: boolean;
   gallery: GalleryPhoto[];
   audio: {
     enabled: boolean;
@@ -97,20 +98,17 @@ export const invitationConfig: InvitationConfig = {
     subtitle: 'Two hearts, one beautiful beginning',
     date: '2026-11-22',
     time: '11:45 AM',
-    timestamp: '2026-11-22T11:45:00+05:30',
+    timestamp: '2026-11-22T11:45:00+05:30', // Asia/Kolkata timezone
     dayOfWeek: 'Sunday',
     muhurtham: 'Auspicious Muhurtham: 11:45 AM',
     venueName: 'Neelamkulagara Devi Temple',
     venueSubtext: 'Devi Sannidhi, Sacred Temple Grounds',
-    address: 'Neelamkulagara Devi Temple',
-    city: 'Alappuzha / Kollam Region',
-    state: 'Kerala, India',
-    // Configurable Google Maps URL (or direct Google Maps search link)
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Neelamkulagara+Devi+Temple',
+    address: '', // Exact address to be supplied by family
+    mapsUrl: '', // Explicitly pending exact Google Maps URL as instructed
     calendarEvent: {
       title: 'Engagement Ceremony of Jyothi & Mridhul',
       description: 'Join us to celebrate the auspicious engagement ceremony of Jyothi & Mridhul with divine blessings at Neelamkulagara Devi Temple.',
-      location: 'Neelamkulagara Devi Temple, Kerala',
+      location: 'Neelamkulagara Devi Temple',
       startTime: '20261122T061500Z', // 11:45 AM IST in UTC
       endTime: '20261122T093000Z',   // 03:00 PM IST in UTC
     },
@@ -122,45 +120,46 @@ export const invitationConfig: InvitationConfig = {
     messageParagraph1:
       'With immense happiness and the blessings of our elders, we invite you to join us as we celebrate this beautiful milestone in their lives.',
     messageParagraph2:
-      'Your presence and warm blessings will make this occasion truly sacred and memorable for our families.',
+      'Your presence and blessings will make this occasion even more special.',
     closingSalutation: 'Your presence is our greatest blessing.',
     closingSignature: 'With love and regards,\nThe Families',
   },
+  showGallery: true,
   gallery: [
     {
       id: 'photo-1',
-      src: '/images/gallery-1.svg',
-      alt: 'Jyothi and Mridhul ring exchange ceremony',
-      caption: 'The Promise of Forever',
+      src: '/images/photo-1.jpg',
+      alt: 'Jyothi and Mridhul in traditional Kerala engagement attire',
+      caption: 'Traditional Elegance',
     },
     {
       id: 'photo-2',
-      src: '/images/gallery-2.svg',
-      alt: 'Neelamkulagara Devi Temple sacred sanctuary',
-      caption: 'Sacred Blessings & Grace',
+      src: '/images/photo-2.jpg',
+      alt: 'Jyothi and Mridhul sharing a joyful, candid moment',
+      caption: 'Shared Smiles & Laughter',
     },
     {
       id: 'photo-3',
-      src: '/images/gallery-3.svg',
-      alt: 'Traditional Kerala kasavu & heritage ornaments',
-      caption: 'Traditions & Heritage',
+      src: '/images/photo-3.jpg',
+      alt: 'Jyothi and Mridhul radiant in festive yellow',
+      caption: 'Sunlit Happiness',
     },
     {
       id: 'photo-4',
-      src: '/images/gallery-4.svg',
-      alt: 'Two hearts united in divine love',
-      caption: 'Two Souls, One Beautiful Beginning',
+      src: '/images/photo-4.jpg',
+      alt: 'Jyothi and Mridhul embracing their beautiful beginning',
+      caption: 'Two Hearts, One Journey',
     },
   ],
   audio: {
     enabled: true,
-    title: 'Divine Temple Shehnai & Sitar Melody',
+    title: 'Auspicious Temple Sitar & Tanpura Raga',
     raga: 'Raga Kalyani (Auspicious)',
   },
   seo: {
-    title: 'Jyothi & Mridhul | Engagement Invitation | 22 November 2026',
-    description: 'We joyfully invite you to celebrate the engagement ceremony of Jyothi & Mridhul on Sunday, 22 November 2026 at Neelamkulagara Devi Temple.',
-    ogImage: '/images/ganesha-hero.jpg',
+    title: 'Jyothi & Mridhul | Luxury Engagement Invitation | 22 November 2026',
+    description: 'We joyfully invite you to celebrate the traditional engagement ceremony of Jyothi & Mridhul on Sunday, 22 November 2026 at Neelamkulagara Devi Temple.',
+    ogImage: '/images/ganesha-hero.png',
     url: 'https://jyothi-mridhul-engagement.vercel.app',
   },
 };

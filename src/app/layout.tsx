@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: 'Jyothi & Mridhul Engagement Invitation',
     images: [
       {
-        url: '/images/ganesha-hero.jpg',
+        url: '/images/ganesha-hero.png',
         width: 1024,
         height: 682,
         alt: 'Lord Ganesha Auspicious Blessing - Jyothi & Mridhul Engagement',
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: invitationConfig.seo.title,
     description: invitationConfig.seo.description,
-    images: ['/images/ganesha-hero.jpg'],
+    images: ['/images/ganesha-hero.png'],
   },
   icons: {
-    icon: '/images/ganesha-hero.jpg',
+    icon: '/images/ganesha-hero.png',
   },
 };
 
@@ -46,7 +46,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#064B38',
+  themeColor: '#34112F',
 };
 
 export default function RootLayout({
@@ -64,7 +64,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#092D23] text-[#F5EBD5] min-h-screen selection:bg-[#B99A51]/30 selection:text-[#FAF5EA]">
+      <body className="bg-[#260C26] text-[#F7EBDD] min-h-screen selection:bg-[#C49A58]/30 selection:text-[#FDF8F2]">
         {children}
       </body>
     </html>
