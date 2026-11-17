@@ -41,12 +41,12 @@ export function GoldenParticles({ burst = false, count = 35, className = '' }: G
 
     window.addEventListener('resize', handleResize);
 
-    // Muted antique gold & champagne tones
+    // Warm Antique Gold & Champagne Gold particle tones
     const colors = [
-      'rgba(247, 235, 221, ', // Soft Warm Ivory
-      'rgba(217, 183, 123, ', // Soft Champagne Gold
-      'rgba(196, 154, 88, ',  // Muted Antique Gold
-      'rgba(156, 119, 56, ',  // Deep Antique Gold
+      'rgba(242, 229, 209, ', // Warm Ivory
+      'rgba(227, 201, 149, ', // Champagne Gold
+      'rgba(197, 161, 106, ', // Antique Gold
+      'rgba(158, 123, 68, ',  // Deep Gold
     ];
 
     const particles: Particle[] = [];
@@ -66,7 +66,6 @@ export function GoldenParticles({ burst = false, count = 35, className = '' }: G
       });
     }
 
-    // Burst mode expansion on opening
     if (burst) {
       particles.forEach((p) => {
         const angle = Math.random() * Math.PI * 2;
@@ -84,13 +83,11 @@ export function GoldenParticles({ burst = false, count = 35, className = '' }: G
         p.y += p.speedY;
         p.x += p.speedX;
 
-        // Subtle glow pulse
         p.opacity += p.pulseSpeed;
         if (p.opacity > 0.8 || p.opacity < 0.15) {
           p.pulseSpeed = -p.pulseSpeed;
         }
 
-        // Wrap around boundaries
         if (p.y < -10) {
           p.y = height + 10;
           p.x = Math.random() * width;
@@ -98,7 +95,6 @@ export function GoldenParticles({ burst = false, count = 35, className = '' }: G
         if (p.x < -10) p.x = width + 10;
         if (p.x > width + 10) p.x = -10;
 
-        // Draw particle with gentle radial glow
         const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
         glow.addColorStop(0, `${p.goldenTone}${p.opacity})`);
         glow.addColorStop(0.5, `${p.goldenTone}${p.opacity * 0.4})`);
@@ -109,8 +105,7 @@ export function GoldenParticles({ burst = false, count = 35, className = '' }: G
         ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
         ctx.fill();
 
-        // Core light dot
-        ctx.fillStyle = `rgba(247, 235, 221, ${p.opacity * 0.85})`;
+        ctx.fillStyle = `rgba(242, 229, 209, ${p.opacity * 0.85})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
         ctx.fill();

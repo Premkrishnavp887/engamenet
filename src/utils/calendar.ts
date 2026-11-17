@@ -17,12 +17,12 @@ export function downloadIcsFile(): void {
   const icsContent = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Jyothi & Mridhul Engagement//EN',
+    'PRODID:-//Jyothi & Mridul Engagement//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
     `SUMMARY:${event.title}`,
-    `DESCRIPTION:${event.description}`,
+    `DESCRIPTION:${event.description.replace(/\n/g, '\\n')}`,
     `LOCATION:${event.location}`,
     `DTSTART:${event.startTime}`,
     `DTEND:${event.endTime}`,
@@ -31,7 +31,7 @@ export function downloadIcsFile(): void {
     'BEGIN:VALARM',
     'TRIGGER:-PT24H',
     'ACTION:DISPLAY',
-    'DESCRIPTION:Reminder: Jyothi & Mridhul Engagement Tomorrow at Neelamkulagara Devi Temple',
+    'DESCRIPTION:Reminder: Jyothi & Mridul Engagement Tomorrow at Neelamkulagara Devi Temple',
     'END:VALARM',
     'END:VEVENT',
     'END:VCALENDAR',
@@ -41,7 +41,7 @@ export function downloadIcsFile(): void {
   const url = window.URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.setAttribute('download', 'Jyothi_Mridhul_Engagement.ics');
+  link.setAttribute('download', 'Jyothi_Mridul_Engagement.ics');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

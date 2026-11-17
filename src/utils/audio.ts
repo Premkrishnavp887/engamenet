@@ -1,148 +1,148 @@
-// Indian Traditional Auspicious Ambient Music Generator (Web Audio API)
-// Provides a warm Tanpura drone and gentle temple chimes/flute resonance
+// Background Audio Manager for Jyothi & Mridul Engagement Invitation
+// Plays the uploaded traditional celebration song (/audio/background-music.mp3)
 
-class IndianAmbientAudio {
-  private ctx: AudioContext | null = null;
+type AudioStateListener = (isPlaying: boolean) => void;
+
+class EngagementAudio {
+  private audio: HTMLAudioElement | null = null;
   private isPlaying = false;
-  private masterGain: GainNode | null = null;
-  private intervals: NodeJS.Timeout[] = [];
-  private audioEl: HTMLAudioElement | null = null;
+  private listeners: Set<AudioStateListener> = new Set();
+  private audioSrc = '/audio/background-music.mp3';
+  private hasInitializedLoad = false;
 
-  private initContext() {
-    if (!this.ctx && typeof window !== 'undefined') {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      this.ctx = new AudioCtx();
-      this.masterGain = this.ctx.createGain();
-      this.masterGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-      this.masterGain.connect(this.ctx.destination);
+  private initAudio(): HTMLAudioElement | null {
+    if (typeof window === 'undefined') return null;
+
+    if (!this.audio) {
+      this.audio = new Audio(this.audioSrc);
+      this.audio.loop = true;
+      this.audio.preload = 'auto';
+      this.audio.volume = 0.75;
+
+      this.audio.addEventListener('play', () => {
+        this.isPlaying = true;
+        this.notifyListeners();
+      });
+
+      this.audio.addEventListener('pause', () => {
+        this.isPlaying = false;
+        this.notifyListeners();
+      });
+
+      this.audio.addEventListener('ended', () => {
+        this.isPlaying = false;
+        this.notifyListeners();
+      });
     }
+
+    return this.audio;
   }
 
-  // Play warm Tanpura Drone (Sa - Pa - Sa' fundamental Indian harmonics: 136.1Hz Om frequency)
-  private startTanpuraDrone() {
-    if (!this.ctx || !this.masterGain) return;
+  public subscribe(listener: AudioStateListener): () => void {
+    this.listeners.add(listener);
+    listener(this.isPlaying);
+    return () => {
+      this.listeners.delete(listener);
+    };
+  }
 
-    // Auspicious fundamental tonic (C# / ~136.1 Hz Om frequency)
-    const fundamental = 136.1;
-    const notes = [
-      fundamental,          // Sa (Root)
-      fundamental * 1.5,    // Pa (Fifth)
-      fundamental * 2,      // Sa' (Upper Octave)
-      fundamental * 1.25,   // Ga (Major Third)
-    ];
-
-    notes.forEach((freq, idx) => {
-      if (!this.ctx || !this.masterGain) return;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      const filter = this.ctx.createBiquadFilter();
-
-      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-
-      // Low-pass warmth
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(450, this.ctx.currentTime);
-
-      // Gentle pulsating amplitude modulation (Tanpura string strum rhythm)
-      const lfo = this.ctx.createOscillator();
-      const lfoGain = this.ctx.createGain();
-      lfo.frequency.setValueAtTime(0.25 + idx * 0.08, this.ctx.currentTime);
-      lfoGain.gain.setValueAtTime(0.03, this.ctx.currentTime);
-      lfo.connect(lfoGain);
-
-      gain.gain.setValueAtTime(0.04 / (idx + 1), this.ctx.currentTime);
-      lfoGain.connect(gain.gain);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.masterGain);
-
-      osc.start();
-      lfo.start();
+  private notifyListeners(): void {
+    this.listeners.forEach((listener) => {
+      try {
+        listener(this.isPlaying);
+      } catch {
+        // Safe handler
+      }
     });
   }
 
-  // Soft Indian Temple chime / bell resonance
-  public playTempleChime() {
-    if (!this.ctx || !this.masterGain) return;
-    try {
-      const bellFreqs = [544, 1088, 1632, 2176];
-      bellFreqs.forEach((freq, i) => {
-        if (!this.ctx || !this.masterGain) return;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq + (Math.random() * 2 - 1), this.ctx.currentTime);
-
-        const now = this.ctx.currentTime;
-        const decay = 2.5 / (i * 0.5 + 1);
-        gain.gain.setValueAtTime(0.06 / (i + 1), now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + decay);
-
-        osc.connect(gain);
-        gain.connect(this.masterGain);
-        osc.start(now);
-        osc.stop(now + decay);
-      });
-    } catch {
-      // Ignore audio failures if suspended
-    }
-  }
-
   public async play(): Promise<boolean> {
+    const audio = this.initAudio();
+    if (!audio) return false;
+
     try {
-      this.initContext();
-      if (!this.ctx || !this.masterGain) return false;
-
-      if (this.ctx.state === 'suspended') {
-        await this.ctx.resume();
+      if (audio.paused) {
+        await audio.play();
       }
-
-      this.startTanpuraDrone();
-
-      // Fade in master gain smoothly
-      this.masterGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(0.18, this.ctx.currentTime + 3);
-
-      // Random gentle temple chimes in the background every 8-15 seconds
-      const chimeTimer = setInterval(() => {
-        if (this.isPlaying) {
-          this.playTempleChime();
-        }
-      }, 10000);
-      this.intervals.push(chimeTimer);
-
       this.isPlaying = true;
+      this.notifyListeners();
       return true;
-    } catch (e) {
-      console.warn('Audio play error:', e);
+    } catch (err) {
+      console.warn('Audio playback waiting for user gesture or permission:', err);
       return false;
     }
   }
 
-  public stop(): void {
-    if (this.ctx && this.masterGain) {
-      try {
-        this.masterGain.gain.setValueAtTime(this.masterGain.gain.value, this.ctx.currentTime);
-        this.masterGain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 1.2);
-        setTimeout(() => {
-          this.ctx?.close();
-          this.ctx = null;
-          this.masterGain = null;
-        }, 1300);
-      } catch {
-        // no-op
-      }
+  public pause(): void {
+    if (this.audio) {
+      this.audio.pause();
+      this.isPlaying = false;
+      this.notifyListeners();
     }
-    this.intervals.forEach((timer) => clearInterval(timer));
-    this.intervals = [];
-    this.isPlaying = false;
+  }
+
+  public stop(): void {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+      this.isPlaying = false;
+      this.notifyListeners();
+    }
+  }
+
+  public toggle(): Promise<boolean> | void {
+    if (this.isPlaying) {
+      this.pause();
+    } else {
+      return this.play();
+    }
   }
 
   public getStatus(): boolean {
     return this.isPlaying;
   }
+
+  /**
+   * Attempts to play immediately upon page load.
+   * If blocked by the browser's strict autoplay policy (e.g. mobile Safari/Chrome),
+   * listens for the first user interaction anywhere on the document (tap, click, scroll)
+   * to immediately start playback without requiring a specific button click.
+   */
+  public startOnLoad(): void {
+    if (typeof window === 'undefined') return;
+    if (this.hasInitializedLoad) return;
+    this.hasInitializedLoad = true;
+
+    // 1. Direct attempt on page load
+    this.play().then((success) => {
+      if (success) return;
+
+      // 2. Fallback: On first user touch/click/scroll anywhere
+      const onUserInteraction = () => {
+        if (!this.isPlaying) {
+          this.play();
+        }
+        cleanup();
+      };
+
+      const cleanup = () => {
+        window.removeEventListener('click', onUserInteraction);
+        window.removeEventListener('touchstart', onUserInteraction);
+        window.removeEventListener('pointerdown', onUserInteraction);
+        window.removeEventListener('keydown', onUserInteraction);
+      };
+
+      window.addEventListener('click', onUserInteraction, { once: true, passive: true });
+      window.addEventListener('touchstart', onUserInteraction, { once: true, passive: true });
+      window.addEventListener('pointerdown', onUserInteraction, { once: true, passive: true });
+      window.addEventListener('keydown', onUserInteraction, { once: true, passive: true });
+    });
+  }
+
+  // Backwards compatibility for opening chime call
+  public playTempleChime(): void {
+    // Handled gracefully
+  }
 }
 
-export const ambientAudio = new IndianAmbientAudio();
+export const ambientAudio = new EngagementAudio();

@@ -2,19 +2,19 @@
 
 @layer base {
   :root {
-    --color-plum-deep: #34112F;
-    --color-plum-dark: #260C26;
-    --color-plum-rich: #461B43;
-    --color-plum-night: #1A071A;
-    --color-gold-muted: #C49A58;
-    --color-gold-champagne: #D9B77B;
-    --color-gold-dark: #9C7738;
-    --color-ivory: #F7EBDD;
-    --color-ivory-light: #FDF8F2;
+    --color-burgundy-deep: #390D1C;
+    --color-wine-red: #58172A;
+    --color-maroon-muted: #722F40;
+    --color-burgundy-dark: #240611;
+    --color-gold-antique: #C5A16A;
+    --color-gold-champagne: #E3C995;
+    --color-gold-dark: #8A6830;
+    --color-ivory: #F2E5D1;
+    --color-ivory-light: #FAF2E6;
   }
 
   body {
-    background-color: var(--color-plum-dark);
+    background-color: var(--color-burgundy-dark);
     color: var(--color-ivory);
     font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
     overflow-x: hidden;
@@ -29,15 +29,15 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #1A071A;
+    background: #17030A;
   }
   ::-webkit-scrollbar-thumb {
-    background: #C49A58;
+    background: #C5A16A;
     border-radius: 3px;
-    border: 1px solid #260C26;
+    border: 1px solid #390D1C;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #D9B77B;
+    background: #E3C995;
   }
 }
 
@@ -58,53 +58,62 @@
   font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
-/* Muted Antique Gold Text Gradients */
+/* Antique & Champagne Gold Text Gradients */
 .gold-text-muted {
-  background: linear-gradient(135deg, #F7EBDD 0%, #D9B77B 40%, #C49A58 75%, #9C7738 100%);
+  background: linear-gradient(135deg, #F2E5D1 0%, #E3C995 40%, #C5A16A 75%, #9E7B44 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gold-text-champagne {
-  background: linear-gradient(135deg, #FFFFFF 0%, #EFE1CF 30%, #D9B77B 65%, #C49A58 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF2E6 25%, #E3C995 65%, #C5A16A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gold-text-antique {
-  background: linear-gradient(135deg, #D9B77B 0%, #C49A58 55%, #8B672B 100%);
+  background: linear-gradient(135deg, #E3C995 0%, #C5A16A 55%, #8A6830 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Background Gradients */
-.bg-royal-plum {
-  background: radial-gradient(circle at 50% 35%, #461B43 0%, #34112F 45%, #260C26 80%, #170517 100%);
+/* Background Gradients - Rich Burgundy Velvet */
+.bg-royal-burgundy {
+  background: radial-gradient(circle at 50% 35%, #58172A 0%, #390D1C 45%, #240611 80%, #17030A 100%);
 }
 
-.bg-plum-card {
-  background: linear-gradient(165deg, rgba(52, 17, 47, 0.95) 0%, rgba(38, 12, 38, 0.98) 100%);
+.bg-burgundy-card {
+  background: linear-gradient(165deg, rgba(57, 13, 28, 0.95) 0%, rgba(36, 6, 17, 0.98) 100%);
 }
 
 .bg-ivory-card {
-  background: linear-gradient(180deg, #FDF7F0 0%, #F7EBDD 60%, #EFE1CF 100%);
+  background: linear-gradient(180deg, #FAF2E6 0%, #F2E5D1 60%, #E8D6BE 100%);
 }
 
-/* Fine Gold Borders & Soft Ambient Lighting */
+/* Backward-compatible aliases */
+.bg-royal-plum {
+  background: radial-gradient(circle at 50% 35%, #58172A 0%, #390D1C 45%, #240611 80%, #17030A 100%);
+}
+
+.bg-plum-card {
+  background: linear-gradient(165deg, rgba(57, 13, 28, 0.95) 0%, rgba(36, 6, 17, 0.98) 100%);
+}
+
+/* Fine Antique Gold Borders & Ambient Velvet Lighting */
 .border-gold-antique {
-  border-color: rgba(196, 154, 88, 0.4);
+  border-color: rgba(197, 161, 106, 0.4);
 }
 
 .border-gold-fine {
-  border-color: rgba(196, 154, 88, 0.25);
+  border-color: rgba(197, 161, 106, 0.25);
 }
 
 .gold-glow-soft {
-  box-shadow: 0 0 25px rgba(196, 154, 88, 0.18);
+  box-shadow: 0 0 25px rgba(197, 161, 106, 0.18);
 }
 
 .gold-box-shadow {
-  box-shadow: 0 16px 40px -10px rgba(15, 3, 15, 0.7), 0 0 20px rgba(196, 154, 88, 0.12);
+  box-shadow: 0 16px 40px -10px rgba(18, 3, 8, 0.75), 0 0 20px rgba(197, 161, 106, 0.12);
 }
 
 /* Diya Flame Flicker */
@@ -174,7 +183,7 @@
 }
 
 .gold-shimmer-sweep {
-  background: linear-gradient(90deg, transparent 0%, rgba(247, 235, 221, 0.25) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(242, 229, 209, 0.25) 50%, transparent 100%);
   background-size: 200% 100%;
   animation: shimmerPass 4s infinite linear;
 }

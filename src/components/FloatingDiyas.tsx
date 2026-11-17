@@ -18,13 +18,13 @@ export function DiyaLamp({ size = 'md', className = '' }: { size?: 'sm' | 'md' |
       <div className="relative -mb-1 z-10 animate-flame">
         <svg viewBox="0 0 24 36" fill="none" className="w-5 h-8">
           <defs>
-            <linearGradient id="flameGradPlum" x1="50%" y1="0%" x2="50%" y2="100%">
+            <linearGradient id="flameGradBurgundy" x1="50%" y1="0%" x2="50%" y2="100%">
               <stop offset="0%" stopColor="#FFFDF0" />
               <stop offset="25%" stopColor="#FFE066" />
               <stop offset="60%" stopColor="#FF9900" />
               <stop offset="100%" stopColor="#CC3300" />
             </linearGradient>
-            <radialGradient id="innerFlameCorePlum" cx="50%" cy="40%" r="50%">
+            <radialGradient id="innerFlameCoreBurgundy" cx="50%" cy="40%" r="50%">
               <stop offset="0%" stopColor="#FFFFFF" />
               <stop offset="60%" stopColor="#FFF275" />
               <stop offset="100%" stopColor="#FF8800" />
@@ -32,12 +32,12 @@ export function DiyaLamp({ size = 'md', className = '' }: { size?: 'sm' | 'md' |
           </defs>
           <path
             d="M12 2 C16 10 21 16 21 24 C21 29.5 17 34 12 34 C7 34 3 29.5 3 24 C3 16 8 10 12 2 Z"
-            fill="url(#flameGradPlum)"
+            fill="url(#flameGradBurgundy)"
             opacity="0.95"
           />
           <path
             d="M12 12 C14.5 17 17 21 17 26 C17 29 14.8 31.5 12 31.5 C9.2 31.5 7 29 7 26 C7 21 9.5 17 12 12 Z"
-            fill="url(#innerFlameCorePlum)"
+            fill="url(#innerFlameCoreBurgundy)"
           />
         </svg>
       </div>
@@ -46,33 +46,33 @@ export function DiyaLamp({ size = 'md', className = '' }: { size?: 'sm' | 'md' |
       <div className="relative z-0 w-full">
         <svg viewBox="0 0 70 36" fill="none" className="w-full h-auto">
           <defs>
-            <linearGradient id="antiqueBrassMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F7EBDD" />
-              <stop offset="30%" stopColor="#D9B77B" />
-              <stop offset="65%" stopColor="#C49A58" />
-              <stop offset="90%" stopColor="#8B672B" />
-              <stop offset="100%" stopColor="#F7EBDD" />
+            <linearGradient id="antiqueBrassMetallicBurgundy" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#F2E5D1" />
+              <stop offset="30%" stopColor="#E3C995" />
+              <stop offset="65%" stopColor="#C5A16A" />
+              <stop offset="90%" stopColor="#8A6830" />
+              <stop offset="100%" stopColor="#F2E5D1" />
             </linearGradient>
-            <linearGradient id="antiqueBrassBase" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#C49A58" />
-              <stop offset="100%" stopColor="#3E2B10" />
+            <linearGradient id="antiqueBrassBaseBurgundy" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#C5A16A" />
+              <stop offset="100%" stopColor="#390D1C" />
             </linearGradient>
           </defs>
-          <ellipse cx="35" cy="14" rx="30" ry="8" fill="url(#antiqueBrassMetallic)" />
-          <ellipse cx="35" cy="13" rx="26" ry="6" fill="#36220E" />
+          <ellipse cx="35" cy="14" rx="30" ry="8" fill="url(#antiqueBrassMetallicBurgundy)" />
+          <ellipse cx="35" cy="13" rx="26" ry="6" fill="#390D1C" />
           <path
             d="M5 14 C5 26 22 28 35 28 C48 28 65 26 65 14 Z"
-            fill="url(#antiqueBrassMetallic)"
+            fill="url(#antiqueBrassMetallicBurgundy)"
           />
           <path
             d="M26 26 H44 L48 34 H22 Z"
-            fill="url(#antiqueBrassBase)"
+            fill="url(#antiqueBrassBaseBurgundy)"
           />
           <ellipse cx="35" cy="14" rx="20" ry="4" fill="#FFAA00" opacity="0.25" />
         </svg>
       </div>
 
-      {/* Soft floor reflection on plum surface */}
+      {/* Soft floor reflection on deep burgundy velvet surface */}
       <div className="w-12 h-2 rounded-full bg-amber-500/15 blur-sm -mt-0.5" />
     </div>
   );
@@ -82,7 +82,7 @@ export function DiyasRow({ className = '' }: { className?: string }) {
   return (
     <div className={`flex items-center justify-between w-full max-w-lg px-6 ${className}`}>
       <DiyaLamp size="md" />
-      <div className="h-[1px] flex-1 mx-4 bg-gradient-to-r from-transparent via-[#C49A58]/30 to-transparent" />
+      <div className="h-[1px] flex-1 mx-4 bg-gradient-to-r from-transparent via-[#C5A16A]/30 to-transparent" />
       <DiyaLamp size="md" />
     </div>
   );
