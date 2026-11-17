@@ -75,18 +75,18 @@ export function CountdownTimer() {
       >
         {/* Section Heading */}
         <div className="flex items-center justify-center gap-2 mb-2">
-          <LotusMotif className="w-5 h-4 text-[#C49A58]" />
+          <LotusMotif className="w-5 h-4 text-[#C5A16A]" />
           <span className="font-serif tracking-[0.24em] text-xs sm:text-sm uppercase gold-text-antique font-semibold">
             Counting Down To The Sacred Moment
           </span>
-          <LotusMotif className="w-5 h-4 text-[#C49A58]" />
+          <LotusMotif className="w-5 h-4 text-[#C5A16A]" />
         </div>
 
-        <p className="font-serif italic text-sm sm:text-base text-[#F7EBDD]/80 mb-8">
+        <p className="font-serif italic text-sm sm:text-base text-[#F2E5D1]/80 mb-8">
           Every second brings us closer to a lifetime of togetherness
         </p>
 
-        {/* Countdown Digits Grid on Deep Plum Card */}
+        {/* Countdown Digits Grid on Deep Burgundy Card */}
         <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-xl mx-auto">
           {timeUnits.map((unit, index) => (
             <motion.div
@@ -95,10 +95,10 @@ export function CountdownTimer() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative flex flex-col items-center justify-center p-3 sm:p-5 rounded-2xl bg-plum-card border border-[#C49A58]/35 shadow-[0_10px_25px_rgba(15,3,15,0.6)] overflow-hidden group"
+              className="relative flex flex-col items-center justify-center p-3 sm:p-5 rounded-2xl bg-burgundy-card border border-[#C5A16A]/35 shadow-[0_10px_25px_rgba(24,6,17,0.6)] overflow-hidden group"
             >
               {/* Inner subtle glow */}
-              <div className="absolute inset-0 bg-radial from-[#C49A58]/08 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-radial from-[#C5A16A]/08 to-transparent pointer-events-none" />
 
               {/* Large Gold Number */}
               <div className="relative font-serif text-2xl sm:text-4xl md:text-5xl font-bold gold-text-champagne tracking-tight min-w-[2ch]">
@@ -106,13 +106,13 @@ export function CountdownTimer() {
               </div>
 
               {/* Unit Label */}
-              <span className="mt-1 sm:mt-2 text-[10px] sm:text-xs font-serif uppercase tracking-[0.2em] text-[#D9B77B]/85 font-medium">
+              <span className="mt-1 sm:mt-2 text-[10px] sm:text-xs font-serif uppercase tracking-[0.2em] text-[#E3C995]/85 font-medium">
                 {unit.label}
               </span>
 
               {/* Fine Corner Accents */}
-              <span className="absolute top-1.5 left-1.5 w-1 h-1 rounded-full bg-[#C49A58]/40" />
-              <span className="absolute top-1.5 right-1.5 w-1 h-1 rounded-full bg-[#C49A58]/40" />
+              <span className="absolute top-1.5 left-1.5 w-1 h-1 rounded-full bg-[#C5A16A]/40" />
+              <span className="absolute top-1.5 right-1.5 w-1 h-1 rounded-full bg-[#C5A16A]/40" />
             </motion.div>
           ))}
         </div>

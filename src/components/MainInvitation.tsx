@@ -10,16 +10,16 @@ export function MainInvitation() {
 
   return (
     <section className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-14 text-center select-none">
-      {/* Royal Plum Invitation Card Frame */}
+      {/* Royal Burgundy Invitation Card Frame */}
       <motion.div
         initial={{ opacity: 0, y: 35 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
-        className="relative bg-plum-card rounded-3xl p-6 sm:p-10 md:p-12 border border-[#C49A58]/35 gold-box-shadow overflow-hidden"
+        className="relative bg-burgundy-card rounded-3xl p-6 sm:p-10 md:p-12 border border-[#C5A16A]/35 gold-box-shadow overflow-hidden"
       >
         {/* Subtle Background Mandala Texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(196,154,88,0.06)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,161,106,0.06)_0%,transparent_70%)] pointer-events-none" />
 
         {/* Fine Antique-Gold Corner Flourishes */}
         <CornerOrnament position="top-left" />
@@ -41,7 +41,7 @@ export function MainInvitation() {
           <p className="font-serif tracking-[0.24em] text-xs sm:text-sm uppercase gold-text-antique font-semibold">
             Together with the blessings of our families
           </p>
-          <p className="mt-2 font-serif text-sm sm:text-base text-[#F7EBDD]/90 italic max-w-lg mx-auto">
+          <p className="mt-2 font-serif text-sm sm:text-base text-[#F2E5D1]/90 italic max-w-lg mx-auto">
             We joyfully invite you to celebrate the engagement ceremony of
           </p>
         </motion.div>
@@ -63,7 +63,7 @@ export function MainInvitation() {
               {bride.firstName}
             </h2>
             {bride.tagline && (
-              <span className="font-script text-lg sm:text-xl text-[#D9B77B]/80 mt-1">
+              <span className="font-script text-lg sm:text-xl text-[#E3C995]/80 mt-1">
                 {bride.tagline}
               </span>
             )}
@@ -77,8 +77,8 @@ export function MainInvitation() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative my-2 sm:my-4 flex items-center justify-center"
           >
-            <div className="absolute w-12 h-12 rounded-full bg-[#C49A58]/10 blur-md" />
-            <span className="relative font-script text-4xl sm:text-5xl md:text-6xl text-[#D9B77B] drop-shadow-[0_2px_8px_rgba(196,154,88,0.3)]">
+            <div className="absolute w-12 h-12 rounded-full bg-[#C5A16A]/10 blur-md" />
+            <span className="relative font-script text-4xl sm:text-5xl md:text-6xl text-[#E3C995] drop-shadow-[0_2px_8px_rgba(197,161,106,0.3)]">
               &
             </span>
           </motion.div>
@@ -95,7 +95,7 @@ export function MainInvitation() {
               {groom.firstName}
             </h2>
             {groom.tagline && (
-              <span className="font-script text-lg sm:text-xl text-[#D9B77B]/80 mt-1">
+              <span className="font-script text-lg sm:text-xl text-[#E3C995]/80 mt-1">
                 {groom.tagline}
               </span>
             )}
@@ -117,9 +117,9 @@ export function MainInvitation() {
             &ldquo;{event.subtitle}&rdquo;
           </p>
           <div className="mt-3 flex items-center gap-2 opacity-80">
-            <span className="w-8 h-[1px] bg-[#C49A58]/35" />
-            <LotusMotif className="w-5 h-4 text-[#C49A58]" />
-            <span className="w-8 h-[1px] bg-[#C49A58]/35" />
+            <span className="w-8 h-[1px] bg-[#C5A16A]/35" />
+            <LotusMotif className="w-5 h-4 text-[#C5A16A]" />
+            <span className="w-8 h-[1px] bg-[#C5A16A]/35" />
           </div>
         </motion.div>
       </motion.div>

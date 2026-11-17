@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { OpeningExperience } from '@/components/OpeningExperience';
 import { MainInvitation } from '@/components/MainInvitation';
@@ -14,10 +14,16 @@ import { AudioPlayer } from '@/components/AudioPlayer';
 import { GoldenParticles } from '@/components/GoldenParticles';
 import { LotusMotif } from '@/components/OrnamentalBorders';
 import { invitationConfig } from '@/config/invitation';
+import { ambientAudio } from '@/utils/audio';
 
 export default function EngagementPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [audioTriggered, setAudioTriggered] = useState(false);
+
+  useEffect(() => {
+    // Attempt to start the celebration song as soon as the site loads
+    ambientAudio.startOnLoad();
+  }, []);
 
   const handleOpenInvitation = () => {
     setIsOpen(true);
@@ -33,7 +39,7 @@ export default function EngagementPage() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-royal-plum overflow-x-hidden selection:bg-[#C49A58]/30">
+    <main className="relative min-h-screen w-full bg-royal-burgundy overflow-x-hidden selection:bg-[#C5A16A]/30">
       <AnimatePresence mode="wait">
         {!isOpen ? (
           <motion.div
@@ -64,13 +70,13 @@ export default function EngagementPage() {
             <header className="w-full max-w-3xl mx-auto pt-5 px-4 flex items-center justify-between z-30 select-none">
               <button
                 onClick={handleReplayOpening}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#34112F]/60 hover:bg-[#461B43]/80 border border-[#C49A58]/30 text-xs font-serif tracking-widest text-[#D9B77B] transition-colors cursor-pointer backdrop-blur-xs"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#390D1C]/60 hover:bg-[#58172A]/80 border border-[#C5A16A]/30 text-xs font-serif tracking-widest text-[#E3C995] transition-colors cursor-pointer backdrop-blur-xs"
               >
-                <LotusMotif className="w-4 h-3 text-[#C49A58]" />
+                <LotusMotif className="w-4 h-3 text-[#C5A16A]" />
                 <span>Blessings of Ganesha</span>
               </button>
 
-              <div className="flex items-center gap-1.5 text-xs font-serif text-[#D9B77B]/70 tracking-widest uppercase">
+              <div className="flex items-center gap-1.5 text-xs font-serif text-[#E3C995]/70 tracking-widest uppercase">
                 <span>22 Nov 2026</span>
               </div>
             </header>
@@ -95,12 +101,12 @@ export default function EngagementPage() {
 
             {/* Closing Section & Auspicious Seal */}
             <ClosingSection />
-
-            {/* Floating Audio Controller */}
-            <AudioPlayer autoTriggered={audioTriggered} />
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Floating Audio Controller (Always accessible across both opening screen and main invitation) */}
+      <AudioPlayer autoTriggered={audioTriggered} />
     </main>
   );
 }

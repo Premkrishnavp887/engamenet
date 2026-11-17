@@ -15,7 +15,7 @@ export function FamilyMessage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 1.1, ease: 'easeOut' }}
-        className="relative bg-plum-card rounded-3xl p-6 sm:p-10 md:p-12 border border-[#C49A58]/35 gold-box-shadow overflow-hidden text-center"
+        className="relative bg-burgundy-card rounded-3xl p-6 sm:p-10 md:p-12 border border-[#C5A16A]/35 gold-box-shadow overflow-hidden text-center"
       >
         <CornerOrnament position="top-left" />
         <CornerOrnament position="top-right" />
@@ -25,9 +25,9 @@ export function FamilyMessage() {
         {/* Section Header */}
         <div className="flex flex-col items-center mb-6">
           <div className="flex items-center gap-2 mb-2 opacity-85">
-            <span className="w-8 h-[1px] bg-[#C49A58]/35" />
-            <LotusMotif className="w-5 h-4 text-[#C49A58]" />
-            <span className="w-8 h-[1px] bg-[#C49A58]/35" />
+            <span className="w-8 h-[1px] bg-[#C5A16A]/35" />
+            <LotusMotif className="w-5 h-4 text-[#C5A16A]" />
+            <span className="w-8 h-[1px] bg-[#C5A16A]/35" />
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl gold-text-muted font-normal tracking-wide">
             {familyBlessing.heading}
@@ -35,53 +35,88 @@ export function FamilyMessage() {
         </div>
 
         {/* Warm Elders' Invitation Message */}
-        <div className="max-w-xl mx-auto space-y-4 font-serif text-base sm:text-lg leading-relaxed text-[#F7EBDD]/90">
+        <div className="max-w-xl mx-auto space-y-4 font-serif text-base sm:text-lg leading-relaxed text-[#F2E5D1]/90">
           <p className="italic">
             &ldquo;{familyBlessing.messageParagraph1}&rdquo;
           </p>
-          <p className="italic text-sm sm:text-base text-[#D9B77B]/90 font-light">
+          <p className="italic text-sm sm:text-base text-[#E3C995]/90 font-light">
             &ldquo;{familyBlessing.messageParagraph2}&rdquo;
           </p>
         </div>
 
         <GoldDivider className="my-8" />
 
-        {/* Configurable Family Details Grid */}
+        {/* Section Title: "With the blessings of" */}
+        <div className="mb-6 flex flex-col items-center">
+          <span className="text-xs sm:text-sm uppercase font-serif tracking-[0.25em] gold-text-antique font-semibold">
+            {familyBlessing.blessingSubheading}
+          </span>
+        </div>
+
+        {/* Symmetrical Family Details Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto text-center">
-          {/* Bride's Parents Column */}
-          <div className="p-5 rounded-2xl bg-black/25 border border-[#C49A58]/25 flex flex-col items-center">
-            <span className="text-xs uppercase font-serif tracking-[0.2em] text-[#D9B77B]/85 font-medium">
-              Bride&apos;s Family
-            </span>
-            <p className="mt-2 text-lg sm:text-xl font-serif font-medium gold-text-antique">
-              {bride.parents.names}
-            </p>
-            <span className="text-xs text-[#F7EBDD]/70 font-serif mt-1">
-              {bride.parents.relation} <strong className="text-[#D9B77B]">{bride.firstName}</strong>
-            </span>
-            {bride.parents.residence && (
-              <span className="text-[11px] text-[#C49A58]/80 mt-1 uppercase tracking-wider font-light">
-                {bride.parents.residence}
+          {/* Bride's Family Card */}
+          <div className="p-6 rounded-2xl bg-black/30 border border-[#C5A16A]/30 flex flex-col items-center justify-between shadow-inner">
+            <div className="w-full flex flex-col items-center">
+              <span className="text-xs uppercase font-serif tracking-[0.22em] text-[#E3C995]/85 font-medium pb-2 border-b border-[#C5A16A]/20 w-full">
+                Bride&apos;s Family
               </span>
-            )}
+
+              {/* Parents Names */}
+              <div className="my-4 space-y-1">
+                <p className="text-lg sm:text-xl font-serif font-medium gold-text-champagne leading-snug">
+                  {bride.parents.father}
+                </p>
+                <span className="text-xs font-script text-[#E3C995]/70 block">&amp;</span>
+                <p className="text-lg sm:text-xl font-serif font-medium gold-text-champagne leading-snug">
+                  {bride.parents.mother}
+                </p>
+              </div>
+
+              <span className="text-xs text-[#F2E5D1]/70 font-serif">
+                Parents of <strong className="text-[#E3C995] font-semibold">{bride.firstName}</strong>
+              </span>
+            </div>
+
+            {/* Address */}
+            <div className="w-full mt-4 pt-3 border-t border-[#C5A16A]/20">
+              <p className="text-xs sm:text-[13px] font-serif text-[#F2E5D1]/85 leading-relaxed">
+                Vellimattom (H),<br />
+                Mattoor, Kalady.
+              </p>
+            </div>
           </div>
 
-          {/* Groom's Parents Column */}
-          <div className="p-5 rounded-2xl bg-black/25 border border-[#C49A58]/25 flex flex-col items-center">
-            <span className="text-xs uppercase font-serif tracking-[0.2em] text-[#D9B77B]/85 font-medium">
-              Groom&apos;s Family
-            </span>
-            <p className="mt-2 text-lg sm:text-xl font-serif font-medium gold-text-antique">
-              {groom.parents.names}
-            </p>
-            <span className="text-xs text-[#F7EBDD]/70 font-serif mt-1">
-              {groom.parents.relation} <strong className="text-[#D9B77B]">{groom.firstName}</strong>
-            </span>
-            {groom.parents.residence && (
-              <span className="text-[11px] text-[#C49A58]/80 mt-1 uppercase tracking-wider font-light">
-                {groom.parents.residence}
+          {/* Groom's Family Card */}
+          <div className="p-6 rounded-2xl bg-black/30 border border-[#C5A16A]/30 flex flex-col items-center justify-between shadow-inner">
+            <div className="w-full flex flex-col items-center">
+              <span className="text-xs uppercase font-serif tracking-[0.22em] text-[#E3C995]/85 font-medium pb-2 border-b border-[#C5A16A]/20 w-full">
+                Groom&apos;s Family
               </span>
-            )}
+
+              {/* Parents Names */}
+              <div className="my-4 space-y-1">
+                <p className="text-lg sm:text-xl font-serif font-medium gold-text-champagne leading-snug">
+                  {groom.parents.father}
+                </p>
+                <span className="text-xs font-script text-[#E3C995]/70 block">&amp;</span>
+                <p className="text-lg sm:text-xl font-serif font-medium gold-text-champagne leading-snug">
+                  {groom.parents.mother}
+                </p>
+              </div>
+
+              <span className="text-xs text-[#F2E5D1]/70 font-serif">
+                Parents of <strong className="text-[#E3C995] font-semibold">{groom.firstName}</strong>
+              </span>
+            </div>
+
+            {/* Address */}
+            <div className="w-full mt-4 pt-3 border-t border-[#C5A16A]/20">
+              <p className="text-xs sm:text-[13px] font-serif text-[#F2E5D1]/85 leading-relaxed">
+                Puthenpurakkal House,<br />
+                Maliankara P O, 683516.
+              </p>
+            </div>
           </div>
         </div>
       </motion.div>
