@@ -62,8 +62,18 @@ export function FamilyMessage() {
                 Bride&apos;s Family
               </span>
 
+              {/* Bride Name & Relation */}
+              <div className="mt-4 mb-2 flex flex-col items-center">
+                <p className="text-xl sm:text-2xl font-serif font-semibold text-[#E3C995] tracking-wide">
+                  {bride.firstName}
+                </p>
+                <span className="text-xs italic text-[#F2E5D1]/75 font-serif mt-0.5">
+                  {bride.parents.relation}
+                </span>
+              </div>
+
               {/* Parents Names */}
-              <div className="my-4 space-y-1">
+              <div className="my-2 space-y-1">
                 <p className="text-lg sm:text-xl font-serif font-medium gold-text-champagne leading-snug">
                   {bride.parents.father}
                 </p>
@@ -72,10 +82,6 @@ export function FamilyMessage() {
                   {bride.parents.mother}
                 </p>
               </div>
-
-              <span className="text-xs text-[#F2E5D1]/70 font-serif">
-                Parents of <strong className="text-[#E3C995] font-semibold">{bride.firstName}</strong>
-              </span>
             </div>
 
             {/* Address */}
@@ -94,8 +100,18 @@ export function FamilyMessage() {
                 Groom&apos;s Family
               </span>
 
+              {/* Groom Name & Relation */}
+              <div className="mt-4 mb-2 flex flex-col items-center">
+                <p className="text-xl sm:text-2xl font-serif font-semibold text-[#E3C995] tracking-wide">
+                  {groom.firstName}
+                </p>
+                <span className="text-xs italic text-[#F2E5D1]/75 font-serif mt-0.5">
+                  {groom.parents.relation}
+                </span>
+              </div>
+
               {/* Parents Names */}
-              <div className="my-4 space-y-1">
+              <div className="my-2 space-y-1">
                 <p className="text-lg sm:text-xl font-serif font-medium gold-text-champagne leading-snug">
                   {groom.parents.father}
                 </p>
@@ -104,10 +120,6 @@ export function FamilyMessage() {
                   {groom.parents.mother}
                 </p>
               </div>
-
-              <span className="text-xs text-[#F2E5D1]/70 font-serif">
-                Parents of <strong className="text-[#E3C995] font-semibold">{groom.firstName}</strong>
-              </span>
             </div>
 
             {/* Address */}
